@@ -1,0 +1,118 @@
+body {
+
+    margin : 0;
+    display: flex;
+    flex-direction: column;
+    width : auto;
+    height : auto;
+}
+
+a{
+    text-decoration: none;
+    color : black;
+}
+
+header {                                /*CSS concernant le titre et le menu de la page d'accueil */
+    display : flex;
+    flex-direction: column;
+}
+
+header h1 {
+    margin : auto;
+    font-family: "Belligerent", serif;
+    font-size: 70px;
+}
+
+header nav ul {
+    display : flex;
+    margin : auto;
+    justify-content: space-around;
+    padding : 0;
+}
+
+header nav ul li {
+    list-style: none;
+    margin-top : 25px;
+    margin-right : 8px;
+    font-size: 30px;
+    font-family: "Belligerent", serif;
+    cursor: pointer;
+}
+
+
+#accueilVente {                     /*CSS concernant le container des produits de la page d'accueil*/
+    display : flex;
+    flex-direction: column;
+    border: 2px solid rgba(0,0,0,0.18);
+    height : auto;
+    width: auto;
+    border-radius: 50px;
+    margin: 10px 5px 10px 5px;
+    background: rgb(195,34,117);
+    background: linear-gradient(0deg, rgba(195,34,117,0.2600227591036415) 0%, rgba(72,93,226,0.3860731792717087) 49%, rgba(253,224,45,0.3720675770308123) 100%);
+ }                                   
+
+h2 {                                        
+    margin : auto;
+    font-size : 20px;
+}
+
+#productsContainer{
+    height : auto;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding : 20px;
+    
+    
+}
+
+.products {
+    height : 270px;
+    width : 270px;
+    margin : 10px;
+    border : 1px solid black;
+    display : flex;
+    flex-direction: column;
+    text-align : center;
+    font-size : 15px;
+    border-radius : 30px;
+    background: burlywood;
+    box-shadow: 1px 3px 11px 3px rgba(5,5,5,1);
+    transition: 1s;
+}
+
+.products:hover {
+    
+    transform: scale(1.1);
+}
+
+.products img{
+    display: flex;
+    width : 100%;
+    height : 65%;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+   
+}
+
+.products h3 {
+    margin : 10px 0px 5px 0px;
+}
+
+.products p {
+    margin : 5px 0px 5px 0px;
+}
+
+.addButton{
+    color : black;
+    font-size : 20px;
+    margin : auto;
+    cursor : pointer;
+}
+
+@font-face {
+    font-family: "Belligerent";
+    src: url("fonts/belligerent.ttf") format("truetype");
+   }
+   
