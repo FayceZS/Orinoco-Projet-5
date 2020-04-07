@@ -46,10 +46,9 @@ header nav ul li {
     border: 2px solid rgba(0,0,0,0.18);
     height : auto;
     width: auto;
-    border-radius: 50px;
+    border-radius: 40px;
     margin: 10px 5px 10px 5px;
-    background: rgb(195,34,117);
-    background: linear-gradient(0deg, rgba(195,34,117,0.2600227591036415) 0%, rgba(72,93,226,0.3860731792717087) 49%, rgba(253,224,45,0.3720675770308123) 100%);
+    
  }                                   
 
 h2 {                                        
@@ -63,8 +62,24 @@ h2 {
     justify-content: space-around;
     flex-wrap: wrap;
     padding : 20px;
+    border-radius : 40px;
+   
     
-    
+}
+
+.oribear {
+    background: rgb(195,34,117);
+    background: linear-gradient(0deg, rgba(195,34,117,0.2600227591036415) 0%, rgba(72,93,226,0.3860731792717087) 49%, rgba(253,224,45,0.3720675770308123) 100%);
+}
+
+
+
+.oricam{
+    background : black;
+}
+
+.orimeuble {
+    background : yellow;
 }
 
 .products {
@@ -109,6 +124,11 @@ h2 {
     font-size : 20px;
     margin : auto;
     cursor : pointer;
+}
+
+footer {                                  /* CSS CONCERNANT LE FOOTER */
+            height : 200px;
+            background-color: black;
 }
 
 @font-face {
