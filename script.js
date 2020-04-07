@@ -11,13 +11,17 @@ const loadTeddies = () => {
 const xhr = new XMLHttpRequest();
 xhr.onload = ()=>{
     const products = JSON.parse(xhr.responseText);
+    const productsContainer = document.getElementById("productsContainer"); // On stocke le contenair des produits pour pouvoir le modifier
     console.log(products);
     productsContainer.innerHTML = "";
+    console.log(productsContainer.classList);
+    if(productsContainer.classList != "oribear"){productsContainer.classList = "oribear"}; //On gère les classes et le CSS adéquat grace à cette condition
     products.forEach((product)=> {
         const afficherProduit = `<div class="products"><img src="${product.imageUrl}"><h3>${product.name}</h3><p>${product.price}</p><a href="#" class = "addButton"><i class="fas fa-plus-circle"></i></a>`;
         
         document.querySelector("#productsContainer").innerHTML += afficherProduit;
     });
+    
 };
 
 // On recuperere les ours en peluche
@@ -46,13 +50,13 @@ const loadCam = () => {
         const productsContainer = document.querySelector("#productsContainer");
         console.log(products);
         productsContainer.innerHTML = "";
+        if(productsContainer.classList != "oricam"){productsContainer.classList = "oricam"}; //On gère les classes et le CSS adéquat grace à cette condition
         products.forEach((product)=> {
             const afficherProduit = `<div class="products"><img src="${product.imageUrl}"><h3>${product.name}</h3><p>${product.price}</p><i class="fas fa-plus-circle addButton"></i>`;
             productsContainer.innerHTML += afficherProduit;
                                         });
-        panier.push(products[2]);
-        console.log("TEST PANIER" + panier);
-        console.log(panier[2].name);
+        
+        
     };
 
 
@@ -80,6 +84,7 @@ const loadFurniture = () => {
         const productsContainer = document.querySelector("#productsContainer");
         console.log(products);
         productsContainer.innerHTML = "";
+        if(productsContainer.classList != "orimeuble"){productsContainer.classList = "orimeuble"}; //On gère les classes et le CSS adéquat grâce à cette condition
         products.forEach((product)=> {
             const afficherProduit = `<div class="products"><img src="${product.imageUrl}"><h3>${product.name}</h3><p>${product.price}</p><i class="fas fa-plus-circle addButton"></i>`;
             productsContainer.innerHTML += afficherProduit;
@@ -103,9 +108,3 @@ orimeuble.addEventListener("click",loadFurniture); //On ajoute l'événement cli
 
 
 
-const addProductPanier = ()=>{
-    console.log(Object)
-};
-
-console.log("TEST PANIER 2" + panier);
-addButton.addEventListener("click",addProductPanier())
