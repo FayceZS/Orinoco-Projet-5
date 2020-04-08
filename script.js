@@ -1,23 +1,37 @@
 let panier =[]; //On initialise une variable qui va nous servir de panier
+let produitDispo = []; //On crée une variable qui va nous servir à stocker chaque produit
 const addButton = document.getElementsByClassName("addButton");         //Bouton pour ajouter au panier
-let cardQuantity = document.getElementById("quantityCard");            //Nombbre de produits que contient le panier
+let cardQuantity = document.getElementById("quantityCard");            //Nombre de produits que contient le panier
+
+
+
+
+
+
 const addToCard = (product)=>{                                         //Fonction qui ajoute nos produits au panier
     panier.push(product);
-    console.log(`Vous avez ajouté ${product.name} à votre panier`);
+    console.log(`Vous avez ajouté ${product} à votre panier`);
     const calculCardQuantity = ()=>{
     cardQuantity.innerHTML = panier.length;
     };
     calculCardQuantity();
+    localStorage.setItem("id",product);
 };
+
+const calculCardQuantity = ()=>{
+    cardQuantity.innerHTML = panier.length;
+    };
+    calculCardQuantity();
 
 const removeToCard = (id)=>{                //Fonction qui supprime nos produits du panier
     const idToDelete = panier.indexOf(id);
     
-    // if(idToDelete> 0){
+    if(idToDelete>= 0){
         panier.splice(idToDelete,1);
-    // }
-    console.log(panier.toString());
-    console.log("element a supprimer :" + idToDelete);
+        console.log(id + " à était supprimé");
+    }
+    
+    
     if(idToDelete > -1){
     const calculCardQuantity = ()=>{
         cardQuantity.innerHTML = panier.length;
@@ -25,9 +39,6 @@ const removeToCard = (id)=>{                //Fonction qui supprime nos produits
         calculCardQuantity();
     }
 }
-
-
-
 
 
 
@@ -46,10 +57,14 @@ xhr.onload = ()=>{
     productsContainer.innerHTML = "";
     if(productsContainer.classList != "oribear"){productsContainer.classList = "oribear"}; //On gère les classes et le CSS adéquat grace à cette condition
     products.forEach((product)=> { //On ajoute les produits correspondants à chaque classe par une boucle
-        const afficherProduit = `<div class="products"><img src="${product.imageUrl}"><h3>${product.name}</h3><p>${product.price}</p><div id="shoppingButtons"><a href="#" class = "addButton" ><i class="fas fa-plus-circle" onclick = addToCard('${product}')></i></a><i class="fas fa-minus-circle" onclick = "removeToCard('${product._id}')"></i></div>`;
-        
+        const afficherProduit = `<div class="products"><img src="${product.imageUrl}"><h3>${product.name}</h3><p>${product.price}</p><div id="shoppingButtons"><a href="#" class = "addButton" onclick="addToCard('${product._id}')"><i class="fas fa-plus-circle" ></i></a><i class="fas fa-minus-circle" onclick = "removeToCard('${product._id}')"></i></div>`;
+        produitDispo.push(product);
+        console.log(produitDispo);
         document.querySelector("#productsContainer").innerHTML += afficherProduit;
+        
+        
     });
+   
     
 };
 
@@ -134,6 +149,16 @@ const loadFurniture = () => {
 const orimeuble = document.getElementById("orimeuble");
 orimeuble.addEventListener("click",loadFurniture); //On ajoute l'événement click pour charger les meubles
 
+for(i=0;i<addButton.length;i++){
+    // addButton[i].addEventListener("click",()=>{
+    //     for(i=0;i<produitDispo.length;i++){
+    //         if(produitDispo[i]==this._id){
+    //             panier.push(produitDispo[i]);
+    //         }
+    //     }
+    // })
+    console.log(i)
+};
 
 
 
