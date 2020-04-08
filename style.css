@@ -6,10 +6,10 @@ body {
     width : auto;
     height : 100%;
     background:
-    linear-gradient(135deg, rgba(154, 4, 241, 0.603) 0%, hsla(278.31, 96.78%, 47.99%, 0) 70%),
-    linear-gradient(25deg, hsla(90.61, 98.12%, 47.83%, 0.3) 10%, hsla(90.61, 98.12%, 47.83%, 0) 80%),
-    linear-gradient(315deg, hsla(3.89, 91.41%, 40.84%, 0.6) 15%, hsla(3.89, 91.41%, 40.84%, 0) 80%),
-    linear-gradient(245deg, hsla(349.18, 95.27%, 41.36%, 0.5) 100%, hsla(349.18, 95.27%, 41.36%, 0) 70%);
+    linear-gradient(135deg, rgba(184, 20, 34, 0.473) 0%, hsla(278.31, 96.78%, 47.99%, 0) 70%),
+    linear-gradient(25deg, rgba(247, 154, 48, 0.19) 10%, hsla(90.61, 98.12%, 47.83%, 0) 80%),
+    linear-gradient(315deg, rgba(203, 204, 206, 0.404) 15%, hsla(3.89, 91.41%, 40.84%, 0) 80%),
+    linear-gradient(245deg, rgba(12, 12, 175, 0.432) 100%, hsla(349.18, 95.27%, 41.36%, 0) 70%);
 }
 
 a{
@@ -52,6 +52,13 @@ header h1 {
     color : white;
     letter-spacing: 5px;
     text-shadow: 3px 5px 2px #474747;
+    width : 100%;
+    text-align: center;
+    background:
+            linear-gradient(135deg, hsla(278.31, 96.78%, 47.99%, 1) 0%, hsla(278.31, 96.78%, 47.99%, 0) 70%),
+            linear-gradient(25deg, hsla(90.61, 98.12%, 47.83%, 1) 10%, hsla(90.61, 98.12%, 47.83%, 0) 80%),
+            linear-gradient(315deg, hsla(3.89, 91.41%, 40.84%, 1) 15%, hsla(3.89, 91.41%, 40.84%, 0) 80%),
+            linear-gradient(245deg, hsla(349.18, 95.27%, 41.36%, 1) 100%, hsla(349.18, 95.27%, 41.36%, 0) 70%);
 }
 
 header nav ul {
