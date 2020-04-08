@@ -4,12 +4,40 @@ body {
     display: flex;
     flex-direction: column;
     width : auto;
-    height : auto;
+    height : 100%;
+    background:
+    linear-gradient(135deg, rgba(154, 4, 241, 0.603) 0%, hsla(278.31, 96.78%, 47.99%, 0) 70%),
+    linear-gradient(25deg, hsla(90.61, 98.12%, 47.83%, 0.3) 10%, hsla(90.61, 98.12%, 47.83%, 0) 80%),
+    linear-gradient(315deg, hsla(3.89, 91.41%, 40.84%, 0.6) 15%, hsla(3.89, 91.41%, 40.84%, 0) 80%),
+    linear-gradient(245deg, hsla(349.18, 95.27%, 41.36%, 0.5) 100%, hsla(349.18, 95.27%, 41.36%, 0) 70%);
 }
 
 a{
     text-decoration: none;
     color : black;
+}
+
+.fa-dolly-flatbed {
+        
+        position: fixed;
+        top : 30px;
+        right : 30px;
+        align-self: flex-end;
+        color : white;
+        font-size: 60px;
+        z-index: 1;
+}
+
+#quantityCard {
+    position: absolute;
+    color : black;
+    border-radius: 100%;
+    z-index : 2;
+    top : 18px;
+    right : 22px;
+    font-family: "Belligerent", serif;
+    font-size : 25px;
+    font-weight: bold;
 }
 
 header {                                /*CSS concernant le titre et le menu de la page d'accueil */
@@ -20,7 +48,10 @@ header {                                /*CSS concernant le titre et le menu de 
 header h1 {
     margin : auto;
     font-family: "Belligerent", serif;
-    font-size: 70px;
+    font-size: 100px;
+    color : white;
+    letter-spacing: 5px;
+    text-shadow: 3px 5px 2px #474747;
 }
 
 header nav ul {
@@ -37,7 +68,29 @@ header nav ul li {
     font-size: 30px;
     font-family: "Belligerent", serif;
     cursor: pointer;
+    
 }
+
+header nav ul li a {
+    color : white;
+}
+button {
+    list-style: none;
+    font-size: 40px;
+    color: white;
+    font-family: "Belligerent", serif;
+    cursor: pointer;
+    border: 2px solid black;
+    border-radius: 15px;
+    background: #2272a8;
+   background: -webkit-linear-gradient(top, #db6dcb, #2272a8);
+   background: -moz-linear-gradient(top, #db6dcb, #2272a8);
+   background: -ms-linear-gradient(top, #db6dcb, #2272a8);
+   background: -o-linear-gradient(top, #db6dcb, #2272a8);
+   padding : 20px;
+   box-shadow: 3px 4px 16px 0px rgba(143,21,143,1);
+}
+
 
 
 #accueilVente {                     /*CSS concernant le container des produits de la page d'accueil*/
@@ -58,10 +111,15 @@ h2 {
 
 #productsContainer{
     height : auto;
+    width : 85%;
+    align-self: center;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
     padding : 20px;
+    border : 2px solid black;
+    margin-top : 30px;
+    margin-bottom : 60px;
     border-radius : 40px;
    
     
@@ -75,11 +133,17 @@ h2 {
 
 
 .oricam{
-    background : black;
+    background: rgb(0,0,0);
+background: radial-gradient(circle, rgba(0,0,0,0.6745885854341737) 0%, rgba(36,45,56,0.7670255602240896) 24%, rgba(161,173,187,1) 51%, rgba(36,38,40,0.6073616946778712) 70%, rgba(19,20,20,0.7558210784313726) 100%);
+}
+
+.oricam .products {
+    background-color: rgba(161,173,187,1);
 }
 
 .orimeuble {
-    background : yellow;
+    background: rgb(195,159,34);
+background: linear-gradient(0deg, rgba(195,159,34,0.7754289215686274) 0%, rgba(206,182,36,0.7586221988795518) 19%, rgba(113,162,39,0.5093224789915967) 73%, rgba(253,187,45,0.6437762605042017) 100%);
 }
 
 .products {
@@ -119,16 +183,22 @@ h2 {
     margin : 5px 0px 5px 0px;
 }
 
-.addButton{
+
+#shoppingButtons i{     
     color : black;
     font-size : 20px;
     margin : auto;
     cursor : pointer;
+    padding : 5px;
 }
 
 footer {                                  /* CSS CONCERNANT LE FOOTER */
-            height : 200px;
-            background-color: black;
+            height : 100px;
+            background:
+            linear-gradient(135deg, hsla(278.31, 96.78%, 47.99%, 1) 0%, hsla(278.31, 96.78%, 47.99%, 0) 70%),
+            linear-gradient(25deg, hsla(90.61, 98.12%, 47.83%, 1) 10%, hsla(90.61, 98.12%, 47.83%, 0) 80%),
+            linear-gradient(315deg, hsla(3.89, 91.41%, 40.84%, 1) 15%, hsla(3.89, 91.41%, 40.84%, 0) 80%),
+            linear-gradient(245deg, hsla(349.18, 95.27%, 41.36%, 1) 100%, hsla(349.18, 95.27%, 41.36%, 0) 70%);
 }
 
 @font-face {
