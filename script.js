@@ -1,5 +1,35 @@
 let panier =[]; //On initialise une variable qui va nous servir de panier
-const addButton = document.getElementsByClassName("addButton");
+const addButton = document.getElementsByClassName("addButton");         //Bouton pour ajouter au panier
+let cardQuantity = document.getElementById("quantityCard");            //Nombbre de produits que contient le panier
+const addToCard = (product)=>{                                         //Fonction qui ajoute nos produits au panier
+    panier.push(product);
+    console.log(`Vous avez ajouté ${product.name} à votre panier`);
+    const calculCardQuantity = ()=>{
+    cardQuantity.innerHTML = panier.length;
+    };
+    calculCardQuantity();
+};
+
+const removeToCard = (id)=>{                //Fonction qui supprime nos produits du panier
+    const idToDelete = panier.indexOf(id);
+    
+    // if(idToDelete> 0){
+        panier.splice(idToDelete,1);
+    // }
+    console.log(panier.toString());
+    console.log("element a supprimer :" + idToDelete);
+    if(idToDelete > -1){
+    const calculCardQuantity = ()=>{
+        cardQuantity.innerHTML = panier.length;
+        };
+        calculCardQuantity();
+    }
+}
+
+
+
+
+
 
 
 
@@ -14,20 +44,19 @@ xhr.onload = ()=>{
     const productsContainer = document.getElementById("productsContainer"); // On stocke le contenair des produits pour pouvoir le modifier
     console.log(products);
     productsContainer.innerHTML = "";
-    console.log(productsContainer.classList);
     if(productsContainer.classList != "oribear"){productsContainer.classList = "oribear"}; //On gère les classes et le CSS adéquat grace à cette condition
-    products.forEach((product)=> {
-        const afficherProduit = `<div class="products"><img src="${product.imageUrl}"><h3>${product.name}</h3><p>${product.price}</p><a href="#" class = "addButton"><i class="fas fa-plus-circle"></i></a>`;
+    products.forEach((product)=> { //On ajoute les produits correspondants à chaque classe par une boucle
+        const afficherProduit = `<div class="products"><img src="${product.imageUrl}"><h3>${product.name}</h3><p>${product.price}</p><div id="shoppingButtons"><a href="#" class = "addButton" ><i class="fas fa-plus-circle" onclick = addToCard('${product}')></i></a><i class="fas fa-minus-circle" onclick = "removeToCard('${product._id}')"></i></div>`;
         
         document.querySelector("#productsContainer").innerHTML += afficherProduit;
     });
     
 };
 
-// On recuperere les ours en peluche
-xhr.open("GET","http://localhost:3000/api/teddies",true);
+
+xhr.open("GET","http://localhost:3000/api/teddies",true);// On recuperere les ours en peluche
 xhr.onerror =()=>{
-    console.log("API introuvable à cette adresse");
+    console.log("API introuvable à cette adresse");//On prévoit un message en cas d'erreur
 }
 xhr.send();
 
@@ -42,6 +71,7 @@ oribears.addEventListener("click",loadTeddies);
 
 
 
+
                  //!!Création de la requête pour les caméras//
 const loadCam = () => {
     const xhr = new XMLHttpRequest(); //On lance la requête Ajax afin d'accéder aux données
@@ -51,7 +81,7 @@ const loadCam = () => {
         console.log(products);
         productsContainer.innerHTML = "";
         if(productsContainer.classList != "oricam"){productsContainer.classList = "oricam"}; //On gère les classes et le CSS adéquat grace à cette condition
-        products.forEach((product)=> {
+        products.forEach((product)=> {    //On ajoute les produits correspondants à chaque classe par une boucle
             const afficherProduit = `<div class="products"><img src="${product.imageUrl}"><h3>${product.name}</h3><p>${product.price}</p><i class="fas fa-plus-circle addButton"></i>`;
             productsContainer.innerHTML += afficherProduit;
                                         });
@@ -71,8 +101,6 @@ const loadCam = () => {
                 //!! Fin de la création concernant les caméras !!//
     
 
-    
-
 const oricam = document.getElementById("oricam"); //On récupére le bouton oricam
 oricam.addEventListener("click",loadCam); //On ajoute l'événement click pour charger les caméras
 
@@ -85,7 +113,7 @@ const loadFurniture = () => {
         console.log(products);
         productsContainer.innerHTML = "";
         if(productsContainer.classList != "orimeuble"){productsContainer.classList = "orimeuble"}; //On gère les classes et le CSS adéquat grâce à cette condition
-        products.forEach((product)=> {
+        products.forEach((product)=> {      //On ajoute les produits correspondants à chaque classe par une boucle
             const afficherProduit = `<div class="products"><img src="${product.imageUrl}"><h3>${product.name}</h3><p>${product.price}</p><i class="fas fa-plus-circle addButton"></i>`;
             productsContainer.innerHTML += afficherProduit;
         });
@@ -105,6 +133,9 @@ const loadFurniture = () => {
 
 const orimeuble = document.getElementById("orimeuble");
 orimeuble.addEventListener("click",loadFurniture); //On ajoute l'événement click pour charger les meubles
+
+
+
 
 
 
