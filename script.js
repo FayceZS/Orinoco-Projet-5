@@ -19,9 +19,12 @@ const addToCard = (product)=>{                                         //Fonctio
 };
 
 const calculCardQuantity = ()=>{
+    if(localStorage.length > 0){
+    
     cardQuantity.innerHTML = localStorage.panier.split(',').length;
     };
     calculCardQuantity();
+    }
 
 const removeToCard = (id)=>{                //Fonction qui supprime nos produits du panier
     const idToDelete = panier.indexOf(id);
