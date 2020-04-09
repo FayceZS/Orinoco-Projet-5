@@ -15,11 +15,11 @@ const addToCard = (product)=>{                                         //Fonctio
     cardQuantity.innerHTML = panier.length;
     };
     calculCardQuantity();
-    localStorage.setItem("id",product);
+    localStorage.setItem("panier",panier);                  //On stocke le panier dans localStorage pour pouvoir s'en servir sur les autres pages
 };
 
 const calculCardQuantity = ()=>{
-    cardQuantity.innerHTML = panier.length;
+    cardQuantity.innerHTML = localStorage.panier.split(',').length;
     };
     calculCardQuantity();
 
@@ -28,15 +28,18 @@ const removeToCard = (id)=>{                //Fonction qui supprime nos produits
     
     if(idToDelete>= 0){
         panier.splice(idToDelete,1);
+        localStorage.clear();                   //On vide le localstorage pour le recharger ensuite sans le produit supprimé
+        localStorage.setItem("panier",panier);  
         console.log(id + " à était supprimé");
     }
     
     
-    if(idToDelete > -1){
+    if(idToDelete > -1){ 
     const calculCardQuantity = ()=>{
         cardQuantity.innerHTML = panier.length;
         };
         calculCardQuantity();
+        
     }
 }
 
@@ -59,7 +62,6 @@ xhr.onload = ()=>{
     products.forEach((product)=> { //On ajoute les produits correspondants à chaque classe par une boucle
         const afficherProduit = `<div class="products"><img src="${product.imageUrl}"><h3>${product.name}</h3><p>${product.price}</p><div id="shoppingButtons"><a href="#" class = "addButton" onclick="addToCard('${product._id}')"><i class="fas fa-plus-circle" ></i></a><i class="fas fa-minus-circle" onclick = "removeToCard('${product._id}')"></i></div>`;
         produitDispo.push(product);
-        console.log(produitDispo);
         document.querySelector("#productsContainer").innerHTML += afficherProduit;
         
         
@@ -72,7 +74,7 @@ xhr.onload = ()=>{
 xhr.open("GET","http://localhost:3000/api/teddies",true);// On recuperere les ours en peluche
 xhr.onerror =()=>{
     console.log("API introuvable à cette adresse");//On prévoit un message en cas d'erreur
-}
+};
 xhr.send();
 
 };
@@ -149,16 +151,7 @@ const loadFurniture = () => {
 const orimeuble = document.getElementById("orimeuble");
 orimeuble.addEventListener("click",loadFurniture); //On ajoute l'événement click pour charger les meubles
 
-for(i=0;i<addButton.length;i++){
-    // addButton[i].addEventListener("click",()=>{
-    //     for(i=0;i<produitDispo.length;i++){
-    //         if(produitDispo[i]==this._id){
-    //             panier.push(produitDispo[i]);
-    //         }
-    //     }
-    // })
-    console.log(i)
-};
+
 
 
 
