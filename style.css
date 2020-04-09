@@ -4,7 +4,7 @@ body {
     display: flex;
     flex-direction: column;
     width : auto;
-    height : 100%;
+    height : all;
     background: rgb(204,200,177);
 background: linear-gradient(0deg, rgba(204,200,177,0.8258490896358543) 0%, rgba(159,158,158,0.5485381652661064) 19%, rgba(197,204,187,0.5093224789915967) 73%, rgba(230,227,227,0.6437762605042017) 100%);
 }
@@ -207,7 +207,25 @@ background: linear-gradient(0deg, rgba(195,159,34,0.7754289215686274) 0%, rgba(2
 
 
 
-                                            /*CSS concernant les produits de la page panier*/
+                                            /*CSS concernant la page panier*/
+#panierVide {
+    height : 200px;
+    width : 500px;
+    margin : auto;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom : 100px;
+    padding : 25px;
+}
+
+#panierVide p {
+    margin : auto;
+    
+}
+
 
 .productsCaddy {
     display : flex;
@@ -226,6 +244,7 @@ background: linear-gradient(0deg, rgba(195,159,34,0.7754289215686274) 0%, rgba(2
 }
 
 footer {                                  /* CSS CONCERNANT LE FOOTER */
+            bottom: 0;
             height : 100px;
             background:
             linear-gradient(135deg, hsla(278.31, 96.78%, 47.99%, 1) 0%, hsla(278.31, 96.78%, 47.99%, 0) 70%),
