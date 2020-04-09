@@ -5,11 +5,8 @@ body {
     flex-direction: column;
     width : auto;
     height : 100%;
-    background:
-    linear-gradient(135deg, rgba(184, 20, 34, 0.473) 0%, hsla(278.31, 96.78%, 47.99%, 0) 70%),
-    linear-gradient(25deg, rgba(247, 154, 48, 0.19) 10%, hsla(90.61, 98.12%, 47.83%, 0) 80%),
-    linear-gradient(315deg, rgba(203, 204, 206, 0.404) 15%, hsla(3.89, 91.41%, 40.84%, 0) 80%),
-    linear-gradient(245deg, rgba(12, 12, 175, 0.432) 100%, hsla(349.18, 95.27%, 41.36%, 0) 70%);
+    background: rgb(204,200,177);
+background: linear-gradient(0deg, rgba(204,200,177,0.8258490896358543) 0%, rgba(159,158,158,0.5485381652661064) 19%, rgba(197,204,187,0.5093224789915967) 73%, rgba(230,227,227,0.6437762605042017) 100%);
 }
 
 a{
@@ -61,6 +58,10 @@ header h1 {
             linear-gradient(245deg, hsla(349.18, 95.27%, 41.36%, 1) 100%, hsla(349.18, 95.27%, 41.36%, 0) 70%);
 }
 
+header h1 a {
+    color : white;
+}
+
 header nav ul {
     display : flex;
     margin : auto;
@@ -96,7 +97,12 @@ button {
    background: -o-linear-gradient(top, #db6dcb, #2272a8);
    padding : 20px;
    box-shadow: 3px 4px 16px 0px rgba(143,21,143,1);
+   
 }
+
+
+
+
 
 
 
@@ -197,6 +203,26 @@ background: linear-gradient(0deg, rgba(195,159,34,0.7754289215686274) 0%, rgba(2
     margin : auto;
     cursor : pointer;
     padding : 5px;
+}
+
+
+
+                                            /*CSS concernant les produits de la page panier*/
+
+.productsCaddy {
+    display : flex;
+    margin : auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width : 80%;
+    background-color: rgb(204,200,177);
+    align-self: center;
+}
+
+.productsCaddy img {
+    width : 40%;
+    height : auto;
+    padding : 20px;
 }
 
 footer {                                  /* CSS CONCERNANT LE FOOTER */
