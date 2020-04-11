@@ -11,33 +11,35 @@ let cardQuantity = document.getElementById("quantityCard");            //Nombre 
 const addToCard = (product)=>{                                         //Fonction qui ajoute nos produits au panier
     panier.push(product);
     console.log(`Vous avez ajouté ${product} à votre panier`);
-    const calculCardQuantity = ()=>{
-    cardQuantity.innerHTML = panier.length;
-    };
-    calculCardQuantity();
+    
     localStorage.setItem("panier",panier);                  //On stocke le panier dans localStorage pour pouvoir s'en servir sur les autres pages
+    calculCardQuantity();
 };
 
 const calculCardQuantity = ()=>{
-    if(localStorage.length > 0){
+    // if(localStorage.length > 0){
+    if(panier.length>0 || localStorage.panier.split(',').length>0 ){
     
-    cardQuantity.innerHTML = localStorage.panier.split(',').length;
-    };
-    calculCardQuantity();
+    cardQuantity.innerHTML = localStorage.panier.split(',').length ;
+    }
+    
+    // };
+    
     }
 
 const removeToCard = (id)=>{                //Fonction qui supprime nos produits du panier
-    const idToDelete = panier.indexOf(id);
+    const idToDelete = panier.indexOf(id); //On recherche le produit avec son id pour être sur qu'il est bien dans le panier
     
     if(idToDelete>= 0){
         panier.splice(idToDelete,1);
         localStorage.clear();                   //On vide le localstorage pour le recharger ensuite sans le produit supprimé
         localStorage.setItem("panier",panier);  
         console.log(id + " à était supprimé");
+        calculCardQuantity();
     }
     
     
-    if(idToDelete > -1){ 
+    if(idToDelete > -1){                        //
     const calculCardQuantity = ()=>{
         cardQuantity.innerHTML = panier.length;
         };
@@ -154,6 +156,7 @@ const loadFurniture = () => {
 const orimeuble = document.getElementById("orimeuble");
 orimeuble.addEventListener("click",loadFurniture); //On ajoute l'événement click pour charger les meubles
 
+calculCardQuantity();
 
 
 
