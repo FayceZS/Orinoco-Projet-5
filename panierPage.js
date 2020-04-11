@@ -4,6 +4,11 @@ const panierProducts = localStorage.getItem("panier").split(","); //On récupér
 console.log(panierProducts);
 
 
+if(panierProducts.length>0){
+    const panierPasVide = document.getElementById("panierVide");
+    document.body.removeChild(panierPasVide);
+}
+
 const loadPanierProducts = () => {                          //On crée une fonction qui va intégrer nos produits à la page panier
     const xhr = new XMLHttpRequest();
     xhr.onload = ()=>{
