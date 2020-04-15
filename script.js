@@ -2,23 +2,22 @@ let panier =[]; //On initialise une variable qui va nous servir de panier
 let produitDispo = []; //On crée une variable qui va nous servir à stocker chaque produit
 const addButton = document.getElementsByClassName("addButton");         //Bouton pour ajouter au panier
 let cardQuantity = document.getElementById("quantityCard");            //Nombre de produits que contient le panier
-let localPanier  ;                      //Le panier local sous forme de tableau 
+let localPanier = [] ;                      //Le panier local sous forme de tableau 
 
 
 
 
 
-const addToCard = (product)=>{                                         //Fonction qui ajoute nos produits au panier
+const addToCard = (product)=>{     
+                     //On stocke le panier dans localStorage pour pouvoir s'en servir sur les autres pages                                    //Fonction qui ajoute nos produits au panier
     localPanier.push(product);
     console.log(`Vous avez ajouté ${product} à votre panier`);
-    
-    localStorage.setItem("panier",localPanier);                  //On stocke le panier dans localStorage pour pouvoir s'en servir sur les autres pages
+   localStorage.setItem("panier",localPanier); 
     calculCardQuantity();
 };
 
 const calculCardQuantity = ()=>{                        //Fonction qui nous permet de calculer le panier actuel du client
-    // if(localStorage.length > 0){
-        
+    
         if(localStorage.hasOwnProperty('panier'))
             {localPanier=localStorage.getItem("panier").split(",");
             if(localPanier[0] == "" ){localPanier.splice(0,1)};
@@ -30,24 +29,8 @@ const calculCardQuantity = ()=>{                        //Fonction qui nous perm
             cardQuantity.innerHTML = localPanier.length;
             if(localStorage.getItem("panier").split(",")>0){localPanier = localStorage.getItem("panier").split(",");};
         };
-
         cardQuantity.innerHTML = localPanier.length;
         
-       
-
-    //  for(i=0;i<localPanier.length;i++){
-    //      let quantity = 0;
-    //     cardQuantity.innerHTML = quantity;
-    //     quantity++;
-    //     console.log(localPanier);
-    //  }   
-    // if(panier.length>0 || localStorage.panier.split(',').length>0 ){
-    
-    // cardQuantity.innerHTML = localStorage.panier.split(',').length ;
-    // }
-    
-    // };
-    
     }
 
 const removeToCard = (id)=>{                //Fonction qui supprime nos produits du panier
@@ -62,7 +45,7 @@ const removeToCard = (id)=>{                //Fonction qui supprime nos produits
     }
     
     
-    if(idToDelete > -1){                        //
+    if(idToDelete > -1){                        //Le produit recherché n'existe pas
     
         calculCardQuantity();
         
@@ -70,7 +53,9 @@ const removeToCard = (id)=>{                //Fonction qui supprime nos produits
 }
 
 
-
+const goToProduct = (_id)=>{
+    console.log(_id);
+}
 
 
 //Création des requêtes et fonctions qui vont nous permettre d'accéder aux produits
@@ -85,12 +70,10 @@ xhr.onload = ()=>{
     console.log(products);
     productsContainer.innerHTML = "";
     if(productsContainer.classList != "oribear"){productsContainer.classList = "oribear"}; //On gère les classes et le CSS adéquat grace à cette condition
-    products.forEach((product)=> { //On ajoute les produits correspondants à chaque classe par une boucle
-        const afficherProduit = `<div class="products"><img src="${product.imageUrl}"><h3>${product.name}</h3><p>${product.price}</p><div id="shoppingButtons"><a href="#" class = "addButton" onclick="addToCard('${product._id}')"><i class="fas fa-plus-circle" ></i></a><i class="fas fa-minus-circle" onclick = "removeToCard('${product._id}')"></i></div>`;
+    products.forEach((product)=> { //On ajoute les produits correspondants à chaque catégorie par une boucle
+        const afficherProduit = `<div class="products"><a href="product.html#${product._id}"><img src="${product.imageUrl}"></a><h3>${product.name}</h3><p>${product.price}</p><div id="shoppingButtons"><span class = "addButton" onclick="addToCard('${product._id}')"><i class="fas fa-plus-circle" ></i></span><i class="fas fa-minus-circle" onclick = "removeToCard('${product._id}')"></i></div>`;
         produitDispo.push(product);
         document.querySelector("#productsContainer").innerHTML += afficherProduit;
-        
-        
     });
    
     
@@ -125,7 +108,7 @@ const loadCam = () => {
         productsContainer.innerHTML = "";
         if(productsContainer.classList != "oricam"){productsContainer.classList = "oricam"}; //On gère les classes et le CSS adéquat grace à cette condition
         products.forEach((product)=> {    //On ajoute les produits correspondants à chaque classe par une boucle
-            const afficherProduit = `<div class="products"><img src="${product.imageUrl}"><h3>${product.name}</h3><p>${product.price}</p><i class="fas fa-plus-circle addButton"></i>`;
+            const afficherProduit = `<div class="products"><a href="product.html#${product._id}"><img src="${product.imageUrl}"></a><h3>${product.name}</h3><p>${product.price}</p><i class="fas fa-plus-circle addButton"></i>`;
             productsContainer.innerHTML += afficherProduit;
                                         });
         
@@ -141,7 +124,7 @@ const loadCam = () => {
     }
     xhr.send();
 };
-                //!! Fin de la création concernant les caméras !!//
+                //!! Fin de la création requête concernant les caméras !!//
     
 
 const oricam = document.getElementById("oricam"); //On récupére le bouton oricam
@@ -157,7 +140,7 @@ const loadFurniture = () => {
         productsContainer.innerHTML = "";
         if(productsContainer.classList != "orimeuble"){productsContainer.classList = "orimeuble"}; //On gère les classes et le CSS adéquat grâce à cette condition
         products.forEach((product)=> {      //On ajoute les produits correspondants à chaque classe par une boucle
-            const afficherProduit = `<div class="products"><img src="${product.imageUrl}"><h3>${product.name}</h3><p>${product.price}</p><i class="fas fa-plus-circle addButton"></i>`;
+            const afficherProduit = `<div class="products"><a href="product.html#${product._id}"><img src="${product.imageUrl}"></a><h3>${product.name}</h3><p>${product.price}</p><i class="fas fa-plus-circle addButton"></i>`;
             productsContainer.innerHTML += afficherProduit;
         });
         };
@@ -177,7 +160,8 @@ const loadFurniture = () => {
 const orimeuble = document.getElementById("orimeuble");
 orimeuble.addEventListener("click",loadFurniture); //On ajoute l'événement click pour charger les meubles
 
-calculCardQuantity();
+if(localStorage.hasOwnProperty('panier'))
+        {calculCardQuantity()};
 
 
 
