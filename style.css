@@ -3,8 +3,9 @@ body {
     margin : 0;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     width : auto;
-    height : all;
+    min-height: 100vh;
     background: rgb(204,200,177);
 background: linear-gradient(0deg, rgba(204,200,177,0.8258490896358543) 0%, rgba(159,158,158,0.5485381652661064) 19%, rgba(197,204,187,0.5093224789915967) 73%, rgba(230,227,227,0.6437762605042017) 100%);
 }
@@ -40,6 +41,7 @@ a{
 header {                                /*CSS concernant le titre et le menu de la page d'accueil */
     display : flex;
     flex-direction: column;
+    height : 10%;
 }
 
 header h1 {
@@ -67,6 +69,7 @@ header nav ul {
     margin : auto;
     justify-content: space-around;
     padding : 0;
+    flex-wrap: wrap;
 }
 
 header nav ul li {
@@ -96,10 +99,14 @@ button {
    background: -ms-linear-gradient(top, #db6dcb, #2272a8);
    background: -o-linear-gradient(top, #db6dcb, #2272a8);
    padding : 20px;
-   box-shadow: 3px 4px 16px 0px rgba(143,21,143,1);
+   box-shadow: 3px 4px 16px 0px rgb(73, 65, 65);
+   transition: 1s;
    
 }
 
+button:hover{
+    transform: scale(1.25);
+}
 
 
 
@@ -123,7 +130,7 @@ h2 {
 }
 
 #productsContainer{
-    height : auto;
+    height : 80%;
     width : 85%;
     align-self: center;
     display: flex;
@@ -179,12 +186,17 @@ background: linear-gradient(0deg, rgba(195,159,34,0.7754289215686274) 0%, rgba(2
     transform: scale(1.1);
 }
 
+.products a{
+    height : 65%;
+}
+
 .products img{
     display: flex;
     width : 100%;
-    height : 65%;
+    height : 100%;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
+    cursor : pointer;
    
 }
 
@@ -208,7 +220,7 @@ background: linear-gradient(0deg, rgba(195,159,34,0.7754289215686274) 0%, rgba(2
 
 
                                             /*CSS concernant la page panier*/
-#panierVide {
+.panierVide {                               /*CSS pour le panier vide*/
     height : 200px;
     width : 500px;
     margin : auto;
@@ -221,31 +233,113 @@ background: linear-gradient(0deg, rgba(195,159,34,0.7754289215686274) 0%, rgba(2
     padding : 25px;
 }
 
-#panierVide p {
+.panierVide p {
     margin : auto;
+    display: flex;
     
+}
+
+.deleteThis {
+    display: none;
+}
+
+h2 {
+    font-size : 40px;
+    font-family: "Belligerent", serif;
+    margin-top : 30px;
+}
+
+#productsContenairCaddy{
+    display: flex;
+    flex-direction: column;
+    width : 90%;
+    align-self: center;
+    
+ 
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 
 .productsCaddy {
     display : flex;
-    margin : auto;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    width : 80%;
-    background-color: rgb(204,200,177);
+    margin : 0;
+    
+    border: 2px solid black;
+    width : 90%;
+    height : 300px;
+    background-color: rgb(255, 255, 255);
     align-self: center;
+    
+    padding : 25px;
+    text-align: justify;
+    
 }
 
 .productsCaddy img {
-    width : 40%;
-    height : auto;
-    padding : 20px;
+    width : 250px;
+    height : 250px;
+    align-self: center;
+    margin-top: 20px;
+    margin-right: 20px;
+    border : 1px solid black;
+
 }
+
+.productInfoCaddy{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-content: center;
+}
+
+.productInfoCaddy select {
+    width: 80px;
+}
+
+                                        /* CSS CONCERNANT LA PAGE DE PRODUIT UNIQUE*/
+
+.uniqueProductContainer{
+    display : flex;
+    height : 90%;
+    justify-content: center;
+}
+
+.uniqueProduct {
+    display : flex;
+    width : 95%;
+    height : 90%;
+    margin : 60px auto 60px auto;
+    padding : 20px;
+    border : 1px solid black;
+    background: rgb(195,34,117);
+    background: linear-gradient(0deg, rgba(195,34,117,0.2600227591036415) 0%, rgba(72,93,226,0.3860731792717087) 49%, rgba(253,224,45,0.3720675770308123) 100%);
+
+}
+
+.uniqueProduct img{
+    height : 500px;
+    width : 450px;
+    margin-right: 20px;
+    border : 1px solid black;
+}
+
+.uniqueProduct h3{
+    font-size : 30px;
+    text-align: center;
+}
+
+.uniqueProduct p {
+    font-size : 25px;
+}
+
+
+
+
 
 footer {                                  /* CSS CONCERNANT LE FOOTER */
             bottom: 0;
-            height : 100px;
+            height : 10%;
             background:
             linear-gradient(135deg, hsla(278.31, 96.78%, 47.99%, 1) 0%, hsla(278.31, 96.78%, 47.99%, 0) 70%),
             linear-gradient(25deg, hsla(90.61, 98.12%, 47.83%, 1) 10%, hsla(90.61, 98.12%, 47.83%, 0) 80%),
