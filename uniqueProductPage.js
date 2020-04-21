@@ -22,6 +22,33 @@ const calculCardQuantity = ()=>{                        //Fonction qui nous perm
 
 calculCardQuantity();
 
+const addToCard = (product)=>{     //Fonction qui ajoute nos produits au panier
+                                        
+localPanier.push(product);          //On stocke le panier dans localStorage pour pouvoir s'en servir sur les autres pages
+console.log(`Vous avez ajouté ${product} à votre panier`);
+localStorage.setItem("panier",localPanier); 
+calculCardQuantity();
+};
+
+const removeToCard = (id)=>{                //Fonction qui supprime nos produits du panier
+    const idToDelete = localPanier.indexOf(id); //On recherche le produit avec son id pour être sur qu'il est bien dans le panier
+    
+    if(idToDelete>= 0){
+        localPanier.splice(idToDelete,1);        //On supprime le produit s'il est présent   
+        localStorage.clear();                   //On vide le localstorage pour le recharger ensuite sans le produit supprimé
+        localStorage.setItem("panier",localPanier);  
+        console.log(id + " à était supprimé");
+        // calculCardQuantity();
+    }
+    
+    
+    if(idToDelete > -1){                        //Le produit recherché n'existe pas
+    
+        calculCardQuantity();
+        
+    }
+}
+
 const loadUniqueProduct = () => {                          //On crée une fonction qui va intégrer nos produits à la page panier
     const xhr = new XMLHttpRequest();
     xhr.onload = ()=>{
@@ -29,9 +56,13 @@ const loadUniqueProduct = () => {                          //On crée une foncti
         const productsContainer = document.getElementById("uniqueProductContainer"); // On stocke le contenair des produits pour pouvoir le modifier
         console.log(product);
         const afficherProduit = 
-    `<div class="uniqueProduct" id="${product._id}" > <img src="${product.imageUrl}"><div class="productInfoCaddy"><h3>${product.name}</h3><p>Prix : ${product.price}</p><p>${product.description}</p><div id="shoppingButtons"><span class = "addButton" onclick="addToCard('${product._id}')"><i class="fas fa-plus-circle" ></i></span><i class="fas fa-minus-circle" onclick = "removeToCard('${product._id}')"></i></div>`;
-    
-    document.querySelector("#uniqueProductContainer").innerHTML += afficherProduit ;        
+    `<div class="uniqueProduct" id="${product._id}" > <img src="${product.imageUrl}"><div class="productInfoCaddy"><h3>${product.name}</h3><p>Prix : ${product.price}</p><p>${product.description}</p>`;
+    let colors = "<select placeholder='Choisissez votre couleur'>";
+    product.colors.forEach(color => {
+        colors += `<option value = "${color}">${color}</option>`
+    });
+    document.querySelector("#uniqueProductContainer").innerHTML += afficherProduit + colors + "</select>" + `<div id="shoppingButtons"><span class = "addButton" onclick="addToCard('${product._id}')"><i class="fas fa-plus-circle" ></i></span><i class="fas fa-minus-circle" onclick = "removeToCard('${product._id}')"></i></div>`;
+        
     }
 
     xhr.open("GET","http://localhost:3000/api/teddies/" + productID, false);   //On utilise les id des produits pour récupérer leurs données dans l'API
