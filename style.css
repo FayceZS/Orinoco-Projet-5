@@ -15,15 +15,24 @@ a{
     color : black;
 }
 
-.fa-dolly-flatbed {
+.fa-dolly-flatbed {                     /*CSS concernant l'icone panier de la page d'accueil*/
         
         position: fixed;
-        top : 30px;
-        right : 30px;
+        top : 10px;
+        right : 15px;
         align-self: flex-end;
         color : white;
         font-size: 60px;
         z-index: 1;
+        background:
+            linear-gradient(135deg, hsla(278.31, 96.78%, 47.99%, 1) 0%, hsla(278.31, 96.78%, 47.99%, 0) 70%),
+            linear-gradient(25deg, hsla(90.61, 98.12%, 47.83%, 1) 10%, hsla(90.61, 98.12%, 47.83%, 0) 80%),
+            linear-gradient(315deg, hsla(3.89, 91.41%, 40.84%, 1) 15%, hsla(3.89, 91.41%, 40.84%, 0) 80%),
+            linear-gradient(245deg, hsla(349.18, 95.27%, 41.36%, 1) 100%, hsla(349.18, 95.27%, 41.36%, 0) 70%);
+        padding: 20px;
+        border-radius: 100%;
+        border : 1px solid black;
+
 }
 
 #quantityCard {
@@ -31,8 +40,8 @@ a{
     color : black;
     border-radius: 100%;
     z-index : 2;
-    top : 18px;
-    right : 22px;
+    top : 35px;
+    right : 40px;
     font-family: "Belligerent", serif;
     font-size : 25px;
     font-weight: bold;
@@ -105,7 +114,7 @@ button {
 }
 
 button:hover{
-    transform: scale(1.25);
+    transform: scale(1.15);
 }
 
 
@@ -249,7 +258,7 @@ h2 {
     margin-top : 30px;
 }
 
-#productsContenairCaddy{
+#productsContenairCaddy{                        /*CSS si le panier contient des objets*/
     display: flex;
     flex-direction: column;
     width : 90%;
@@ -263,7 +272,7 @@ h2 {
 
 .productsCaddy {
     display : flex;
-    margin : 0;
+    margin : 0 0 10px 0;
     
     border: 2px solid black;
     width : 90%;
@@ -297,6 +306,24 @@ h2 {
     width: 80px;
 }
 
+#formulaireCommande{
+    display: flex;
+    flex-direction: column;
+    margin : auto;
+    width:80%;
+    border : 1px solid black;
+    padding : 10px;
+    margin-bottom: 15px;
+}
+
+#formulaireCommande input {
+    padding: 5px;
+    margin-bottom: 15px;
+    border-radius : 15px;
+    width : 90%;
+    margin:auto auto 15px auto;
+}
+
                                         /* CSS CONCERNANT LA PAGE DE PRODUIT UNIQUE*/
 
 .uniqueProductContainer{
@@ -307,7 +334,7 @@ h2 {
 
 .uniqueProduct {
     display : flex;
-    width : 95%;
+    width : 80%;
     height : 90%;
     margin : 60px auto 60px auto;
     padding : 20px;
@@ -352,3 +379,40 @@ footer {                                  /* CSS CONCERNANT LE FOOTER */
     src: url("fonts/belligerent.ttf") format("truetype");
    }
    
+
+@media (max-width : 425px){
+    #orinocoTitle{
+        font-size:40px;
+        padding : 15px;
+    }
+
+    button{
+        font-size : 20px;
+        padding : 10px;
+    }
+
+    .fa-dolly-flatbed{
+        font-size : 35px;
+        top : 15px;
+        right : 15px;
+        position: fixed;
+        
+        color: white;
+        padding: 10px;
+        border-radius: 100%;
+        background:
+            linear-gradient(135deg, hsla(278.31, 96.78%, 47.99%, 1) 0%, hsla(278.31, 96.78%, 47.99%, 0) 70%),
+            linear-gradient(25deg, hsla(90.61, 98.12%, 47.83%, 1) 10%, hsla(90.61, 98.12%, 47.83%, 0) 80%),
+            linear-gradient(315deg, hsla(3.89, 91.41%, 40.84%, 1) 15%, hsla(3.89, 91.41%, 40.84%, 0) 80%),
+            linear-gradient(245deg, hsla(349.18, 95.27%, 41.36%, 1) 100%, hsla(349.18, 95.27%, 41.36%, 0) 70%);
+    }
+
+    #quantityCard{
+        top:18px;
+        right:22px;
+        color: rgb(14, 0, 0);
+        font-weight: bold;
+        font-size : 17px;
+        font-family: serif;
+    }
+}
