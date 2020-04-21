@@ -29,6 +29,7 @@ exports.getOneTeddy = (req, res, next) => {
   ).catch(
     (error) => {
       res.status(500).send(error);
+      console.log(req.body)
     }
   )
 };
@@ -47,6 +48,7 @@ exports.getOneTeddy = (req, res, next) => {
  *
  */
 exports.orderTeddies = (req, res, next) => {
+  
   let queries = [];
   for (let productId of req.body.products) {
     const queryPromise = new Promise((resolve, reject) => {
@@ -74,6 +76,8 @@ exports.orderTeddies = (req, res, next) => {
     }
   ).catch(
     (error) => {
+      
+      console.log(req.body);
       return res.status(500).json(error);
     }
   );
