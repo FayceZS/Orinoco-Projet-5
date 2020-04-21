@@ -109,7 +109,7 @@ const submitForm = ()=>{                    //On crée la fonction qui nous perm
        
     const xhr = new XMLHttpRequest();
     const products = panierProducts;
-    let requestToSend = {
+    let requestToSend = {                                   //On crée l'objet attendu par l'API pour répondre correctement
         contact : contact,
         products : products
     } ;
@@ -123,8 +123,8 @@ const submitForm = ()=>{                    //On crée la fonction qui nous perm
     xhr.open("POST", "http://localhost:3000/api/teddies/order", false);
     xhr.setRequestHeader("Content-Type", "application/json");
      
-                                                            //JSON.stringify(jsonBody)
-    xhr.send(JSON.stringify(requestToSend));
+                                                           
+    xhr.send(JSON.stringify(requestToSend));                            //On converti l'objet au format JSON avant de l'envoyer
     
     
     
