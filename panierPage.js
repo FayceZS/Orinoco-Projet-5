@@ -3,6 +3,7 @@
 // console.log(localStorage);
 const panierVide = document.querySelector(".panierVide");           
 const formulaire = document.querySelector("#formulaireCommande");
+const productContenairCaddy = document.querySelector("#productsContenairCaddy");
 let totalPrice = 0;         //On initialise une variable qui nous permettra de calculer le prix total
 let panierProducts = []; ; //On récupére notre panier dans le local storage qu'on transformera en tableau pour s'en servir après via des boucles
 const firstNameForm = document.querySelector("#firstName"); //On stocke les champs du formulaire dans des variables pour les utiliser plus tard
@@ -45,7 +46,40 @@ class contactCreate  {                                                      //On
 };
 
 
+const addToCard = (product)=>{     //Fonction qui ajoute nos produits au panier
+                                        
+    //On stocke le panier dans localStorage pour pouvoir s'en servir sur les autres pages
+console.log(`Vous avez ajouté ${product} à votre panier`);
 
+
+panierProducts.push(product); 
+localStorage.setItem("panier",panierProducts);
+productContenairCaddy.innerHTML = "";
+totalPrice = 0;
+loadPanierProducts();
+};
+
+const removeToCard = (id)=>{                //Fonction qui supprime nos produits du panier
+    const idToDelete = panierProducts.indexOf(id); //On recherche le produit avec son id pour être sur qu'il est bien dans le panier
+    
+    if(idToDelete>= 0){
+        panierProducts.splice(idToDelete,1);        //On supprime le produit s'il est présent   
+        localStorage.clear();                   //On vide le localstorage pour le recharger ensuite sans le produit supprimé
+        localStorage.setItem("panier",panierProducts);  
+        console.log(id + " à était supprimé");
+        productContenairCaddy.innerHTML = "";
+        totalPrice = 0;
+        loadPanierProducts;
+    }
+    
+    
+    if(idToDelete > -1){                        //Le produit recherché n'existe pas
+    
+        loadPanierProducts();
+        checkPanier();
+        
+    }
+}
 
 
 
@@ -70,7 +104,8 @@ const checkPanier = ()=>{                                               //Foncti
         if(panierProducts.length == 0){
             panierVide.classList.remove("deleteThis");
             panierVide.classList.add("panierVide");
-            formulaire.classList.add("deleteThis")
+            formulaire.classList.add("deleteThis");
+
         };
         
 
@@ -93,11 +128,12 @@ const loadPanierProducts = () => {                          //On crée une fonct
        
         
          
-    const afficherProduit =`<div class="productsCaddy" id="${product._id}" > <img src="${product.imageUrl}"><div class="productInfoCaddy"><h3>${product.name}</h3><p>Prix : ${product.price}</p><p>${product.description}</p>`;
+    const afficherProduit =`<div class="productsCaddy" id="${product._id}" > <img src="${product.imageUrl}"><div class="productInfoCaddy"><div id="panierPageButtons"><h3>${product.name}</h3><div id="shoppingButtons"><span class = "addButton" onclick="addToCard('${product._id}')"><i class="fas fa-plus-circle" ></i></span><i class="fas fa-minus-circle" onclick = "removeToCard('${product._id}')"></i></div></div><p>Prix : ${product.price}</p><p>${product.description}</p>`;
     let colors = "<select placeholder='Choisissez votre couleur'>";
     product.colors.forEach(color => {
         colors += `<option value = "${color}">${color}</option>`
     });
+
     document.querySelector("#productsContenairCaddy").innerHTML += afficherProduit + colors + "</select>";
     totalPrice += product.price;                                                                                    //On calcule le prix total
     
@@ -111,6 +147,7 @@ const loadPanierProducts = () => {                          //On crée une fonct
         xhr.send();
         });
     }
+    totalPriceContenair.innerHTML = `Prix total : ${totalPrice}`;   //Intégration du prix total
     };
 
 
@@ -119,7 +156,7 @@ const loadPanierProducts = () => {                          //On crée une fonct
 
 loadPanierProducts();                        //On lance la fonction qui va charger les produits du client
 
-totalPriceContenair.innerHTML += `Prix total : ${totalPrice}`;   //Intégration du prix total
+
 
 const submitForm = ()=>{                    //On crée la fonction qui nous permettra d'envoyer notre formulaire
 
