@@ -376,6 +376,21 @@ h2 {
 
 
 
+                                           /*CSS CONCERNANT LA CONIFRMATION DE COMMANDE*/ 
+
+#confirmationMessage{
+    border : 1px solid black;
+    width : 80%;
+    height : auto;
+    margin : 0 auto 0 auto;
+    background:
+            linear-gradient(135deg, hsla(278.31, 96.78%, 47.300%, 0.2) 0%, hsla(278.31, 96.78%, 47.99%, 0) 70%),
+            linear-gradient(25deg, hsla(90.61, 98.12%, 47.30%, 0.2) 10%, hsla(90.61, 98.12%, 47.83%, 0) 80%),
+            linear-gradient(315deg, hsla(3.89, 91.41%, 40.30%, 0.2) 15%, hsla(3.89, 91.41%, 40.84%, 0) 80%),
+            linear-gradient(245deg, hsla(349.18, 95.27%, 41.36%, 0.2) 100%, hsla(349.18, 95.27%, 41.36%, 0) 70%);
+    padding : 20px; 
+}
+
 
 
 footer {                                  /* CSS CONCERNANT LE FOOTER */
@@ -384,7 +399,7 @@ footer {                                  /* CSS CONCERNANT LE FOOTER */
             background:
             linear-gradient(135deg, hsla(278.31, 96.78%, 47.99%, 1) 0%, hsla(278.31, 96.78%, 47.99%, 0) 70%),
             linear-gradient(25deg, hsla(90.61, 98.12%, 47.83%, 1) 10%, hsla(90.61, 98.12%, 47.83%, 0) 80%),
-            linear-gradient(315deg, hsla(3.89, 91.41%, 40.84%, 1) 15%, hsla(3.89, 91.41%, 40.84%, 0) 80%),
+            linear-gradient(315deg, rgb(214, 162, 158) 15%, hsla(3.89, 91.41%, 40.84%, 0) 80%),
             linear-gradient(245deg, hsla(349.18, 95.27%, 41.36%, 1) 100%, hsla(349.18, 95.27%, 41.36%, 0) 70%);
 }
 
