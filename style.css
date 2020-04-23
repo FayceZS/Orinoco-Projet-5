@@ -1,0 +1,471 @@
+body {
+
+    margin : 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width : auto;
+    min-height: 100vh;
+    background: rgb(204,200,177);
+background: linear-gradient(0deg, rgba(204,200,177,0.8258490896358543) 0%, rgba(159,158,158,0.5485381652661064) 19%, rgba(197,204,187,0.5093224789915967) 73%, rgba(230,227,227,0.6437762605042017) 100%);
+}
+
+a{
+    text-decoration: none;
+    color : black;
+}
+
+.fa-dolly-flatbed {                     /*CSS concernant l'icone panier de la page d'accueil*/
+        
+        position: fixed;
+        top : 10px;
+        right : 15px;
+        align-self: flex-end;
+        color : white;
+        font-size: 60px;
+        z-index: 1;
+        background:
+            linear-gradient(135deg, hsla(278.31, 96.78%, 47.99%, 1) 0%, hsla(278.31, 96.78%, 47.99%, 0) 70%),
+            linear-gradient(25deg, hsla(90.61, 98.12%, 47.83%, 1) 10%, hsla(90.61, 98.12%, 47.83%, 0) 80%),
+            linear-gradient(315deg, hsla(3.89, 91.41%, 40.84%, 1) 15%, hsla(3.89, 91.41%, 40.84%, 0) 80%),
+            linear-gradient(245deg, hsla(349.18, 95.27%, 41.36%, 1) 100%, hsla(349.18, 95.27%, 41.36%, 0) 70%);
+        padding: 20px;
+        border-radius: 100%;
+        border : 1px solid black;
+
+}
+
+#quantityCard {
+    position: absolute;
+    color : black;
+    border-radius: 100%;
+    z-index : 2;
+    top : 35px;
+    right : 40px;
+    font-family: "Belligerent", serif;
+    font-size : 25px;
+    font-weight: bold;
+}
+
+header {                                /*CSS concernant le titre et le menu de la page d'accueil */
+    display : flex;
+    flex-direction: column;
+    height : 10%;
+}
+
+header h1 {
+    margin : auto;
+    font-family: "Belligerent", serif;
+    font-size: 100px;
+    color : white;
+    letter-spacing: 5px;
+    text-shadow: 3px 5px 2px #474747;
+    width : 100%;
+    text-align: center;
+    background:
+            linear-gradient(135deg, hsla(278.31, 96.78%, 47.99%, 1) 0%, hsla(278.31, 96.78%, 47.99%, 0) 70%),
+            linear-gradient(25deg, hsla(90.61, 98.12%, 47.83%, 1) 10%, hsla(90.61, 98.12%, 47.83%, 0) 80%),
+            linear-gradient(315deg, hsla(3.89, 91.41%, 40.84%, 1) 15%, hsla(3.89, 91.41%, 40.84%, 0) 80%),
+            linear-gradient(245deg, hsla(349.18, 95.27%, 41.36%, 1) 100%, hsla(349.18, 95.27%, 41.36%, 0) 70%);
+}
+
+header h1 a {
+    color : white;
+}
+
+header nav ul {
+    display : flex;
+    margin : auto;
+    justify-content: space-around;
+    padding : 0;
+    flex-wrap: wrap;
+}
+
+header nav ul li {
+    list-style: none;
+    margin-top : 25px;
+    margin-right : 8px;
+    font-size: 30px;
+    font-family: "Belligerent", serif;
+    cursor: pointer;
+    
+}
+
+header nav ul li a {
+    color : white;
+}
+button {
+    list-style: none;
+    font-size: 40px;
+    color: white;
+    font-family: "Belligerent", serif;
+    cursor: pointer;
+    border: 2px solid black;
+    border-radius: 15px;
+    background: #2272a8;
+   background: -webkit-linear-gradient(top, #db6dcb, #2272a8);
+   background: -moz-linear-gradient(top, #db6dcb, #2272a8);
+   background: -ms-linear-gradient(top, #db6dcb, #2272a8);
+   background: -o-linear-gradient(top, #db6dcb, #2272a8);
+   padding : 20px;
+   box-shadow: 3px 4px 16px 0px rgb(73, 65, 65);
+   transition: 1s;
+   
+}
+
+button:hover{
+    transform: scale(1.15);
+}
+
+
+
+
+
+
+#accueilVente {                     /*CSS concernant le container des produits de la page d'accueil*/
+    display : flex;
+    flex-direction: column;
+    border: 2px solid rgba(0,0,0,0.18);
+    height : auto;
+    width: auto;
+    border-radius: 40px;
+    margin: 10px 5px 10px 5px;
+    
+ }                                   
+
+h2 {                                        
+    margin : auto;
+    font-size : 20px;
+}
+
+#productsContainer{
+    height : 80%;
+    width : 85%;
+    align-self: center;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding : 20px;
+    border : 2px solid black;
+    margin-top : 30px;
+    margin-bottom : 60px;
+    border-radius : 40px;
+   
+    
+}
+
+.oribear {
+    background: rgb(195,34,117);
+    background: linear-gradient(0deg, rgba(195,34,117,0.2600227591036415) 0%, rgba(72,93,226,0.3860731792717087) 49%, rgba(253,224,45,0.3720675770308123) 100%);
+}
+
+
+
+.oricam{
+    background: rgb(0,0,0);
+background: radial-gradient(circle, rgba(0,0,0,0.6745885854341737) 0%, rgba(36,45,56,0.7670255602240896) 24%, rgba(161,173,187,1) 51%, rgba(36,38,40,0.6073616946778712) 70%, rgba(19,20,20,0.7558210784313726) 100%);
+}
+
+.oricam .products {
+    background-color: rgba(161,173,187,1);
+}
+
+.orimeuble {
+    background: rgb(195,159,34);
+background: linear-gradient(0deg, rgba(195,159,34,0.7754289215686274) 0%, rgba(206,182,36,0.7586221988795518) 19%, rgba(113,162,39,0.5093224789915967) 73%, rgba(253,187,45,0.6437762605042017) 100%);
+}
+
+.products {
+    height : 270px;
+    width : 270px;
+    margin : 10px;
+    border : 1px solid black;
+    display : flex;
+    flex-direction: column;
+    text-align : center;
+    font-size : 15px;
+    border-radius : 30px;
+    background: burlywood;
+    box-shadow: 1px 3px 11px 3px rgba(5,5,5,1);
+    transition: 1s;
+}
+
+.products:hover {
+    
+    transform: scale(1.1);
+}
+
+.products a{
+    height : 65%;
+}
+
+.products img{
+    display: flex;
+    width : 100%;
+    height : 100%;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    cursor : pointer;
+   
+}
+
+.products h3 {
+    margin : 10px 0px 5px 0px;
+}
+
+.products p {
+    margin : 5px 0px 5px 0px;
+}
+
+
+#shoppingButtons i{     
+    color : black;
+    font-size : 20px;
+    margin : auto;
+    cursor : pointer;
+    padding : 5px;
+}
+
+
+
+                                            /*CSS concernant la page panier*/
+.panierVide {                               /*CSS pour le panier vide*/
+    height : 200px;
+    width : 500px;
+    margin : auto;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom : 100px;
+    padding : 25px;
+}
+
+.panierVide p {
+    margin : auto;
+    display: flex;
+    
+}
+
+.deleteThis {
+    display: none!important; 
+    
+}
+
+h2 {
+    font-size : 40px;
+    font-family: "Belligerent", serif;
+    margin-top : 30px;
+}
+
+#productsContenairCaddy{                        /*CSS si le panier contient des objets*/
+    display: flex;
+    flex-direction: column;
+    width : 90%;
+    align-self: center;
+    
+ 
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+
+.productsCaddy {
+    display : flex;
+    margin : 0 0 10px 0;
+    
+    border: 2px solid black;
+    width : 90%;
+    height : 300px;
+    background-color: rgb(255, 255, 255);
+    align-self: center;
+    
+    padding : 25px;
+    text-align: justify;
+    
+}
+
+.productsCaddy img {
+    width : 250px;
+    height : 250px;
+    align-self: center;
+    margin-top: 20px;
+    margin-right: 20px;
+    border : 1px solid black;
+    padding : 1px;
+
+}
+
+.productInfoCaddy{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-content: center;
+}
+
+.productInfoCaddy select {
+    width: 80px;
+}
+
+#formulaireCommande{                        /*CSS concernant le formulaire*/
+    display: flex;
+    flex-direction: column;
+    margin : auto;
+    width:80%;
+    border : 1px solid black;
+    padding : 10px;
+    margin-bottom: 15px;
+}
+
+#formulaireCommande input {
+    padding: 5px;
+    margin-bottom: 15px;
+    border-radius : 15px;
+    width : 90%;
+    margin:auto auto 15px auto;
+}
+
+.badInput{
+    background: brown;
+}
+
+.badInput::placeholder{
+    color:white;
+    font-weight: bold;
+}
+
+.goodInput{
+    background : rgb(88, 165, 88);
+}
+
+                                        /* CSS CONCERNANT LA PAGE DE PRODUIT UNIQUE*/
+
+.uniqueProductContainer{
+    display : flex;
+    height : 90%;
+    justify-content: center;
+}
+
+.uniqueProduct {
+    display : flex;
+    width : 80%;
+    height : 90%;
+    margin : 60px auto 60px auto;
+    padding : 20px;
+    border : 1px solid black;
+    background: rgb(195,34,117);
+    background: linear-gradient(0deg, rgba(195,34,117,0.2600227591036415) 0%, rgba(72,93,226,0.3860731792717087) 49%, rgba(253,224,45,0.3720675770308123) 100%);
+
+}
+
+.uniqueProduct img{
+    height : 500px;
+    width : 450px;
+    margin-right: 20px;
+    border : 1px solid black;
+}
+
+.uniqueProduct h3{
+    font-size : 30px;
+    text-align: center;
+}
+
+.uniqueProduct p {
+    font-size : 25px;
+}
+
+#panierPageButtons{
+    display : flex;
+    justify-content: space-between;
+}
+
+
+
+                                           /*CSS CONCERNANT LA CONIFRMATION DE COMMANDE*/ 
+
+#confirmationMessage{
+    border : 1px solid black;
+    width : 80%;
+    height : auto;
+    margin : 0 auto 0 auto;
+    background:
+            linear-gradient(135deg, hsla(278.31, 96.78%, 47.300%, 0.2) 0%, hsla(278.31, 96.78%, 47.99%, 0) 70%),
+            linear-gradient(25deg, hsla(90.61, 98.12%, 47.30%, 0.2) 10%, hsla(90.61, 98.12%, 47.83%, 0) 80%),
+            linear-gradient(315deg, hsla(3.89, 91.41%, 40.30%, 0.2) 15%, hsla(3.89, 91.41%, 40.84%, 0) 80%),
+            linear-gradient(245deg, hsla(349.18, 95.27%, 41.36%, 0.2) 100%, hsla(349.18, 95.27%, 41.36%, 0) 70%);
+    padding : 20px; 
+}
+
+
+
+footer {                                  /* CSS CONCERNANT LE FOOTER */
+            bottom: 0;
+            height : 10%;
+            background:
+            linear-gradient(135deg, hsla(278.31, 96.78%, 47.99%, 1) 0%, hsla(278.31, 96.78%, 47.99%, 0) 70%),
+            linear-gradient(25deg, hsla(90.61, 98.12%, 47.83%, 1) 10%, hsla(90.61, 98.12%, 47.83%, 0) 80%),
+            linear-gradient(315deg, rgb(214, 162, 158) 15%, hsla(3.89, 91.41%, 40.84%, 0) 80%),
+            linear-gradient(245deg, hsla(349.18, 95.27%, 41.36%, 1) 100%, hsla(349.18, 95.27%, 41.36%, 0) 70%);
+}
+
+@font-face {
+    font-family: "Belligerent";
+    src: url("fonts/belligerent.ttf") format("truetype");
+   }
+   
+
+@media (max-width : 425px){                    /*CSS concernant les medias queries*/
+    #orinocoTitle{
+        font-size:40px;
+        padding : 10px 0px 10px 0px;
+    }
+
+    button{
+        font-size : 20px;
+        padding : 10px;
+    }
+
+    .fa-dolly-flatbed{
+        font-size : 35px;
+        top : 15px;
+        right : 15px;
+        position: fixed;
+        
+        color: white;
+        padding: 10px;
+        border-radius: 100%;
+        background:
+            linear-gradient(135deg, hsla(278.31, 96.78%, 47.99%, 1) 0%, hsla(278.31, 96.78%, 47.99%, 0) 70%),
+            linear-gradient(25deg, hsla(90.61, 98.12%, 47.83%, 1) 10%, hsla(90.61, 98.12%, 47.83%, 0) 80%),
+            linear-gradient(315deg, hsla(3.89, 91.41%, 40.84%, 1) 15%, hsla(3.89, 91.41%, 40.84%, 0) 80%),
+            linear-gradient(245deg, hsla(349.18, 95.27%, 41.36%, 1) 100%, hsla(349.18, 95.27%, 41.36%, 0) 70%);
+    }
+
+    #quantityCard{
+        top:18px;
+        right:22px;
+        color: rgb(14, 0, 0);
+        font-weight: bold;
+        font-size : 17px;
+        font-family: serif;
+    }
+
+    .uniqueProduct, .productsCaddy{
+        flex-direction: column;
+    }
+
+    .uniqueProduct img{
+        width : 100%;
+        height : 60%;
+    }
+
+    .productsCaddy{
+        height : auto;
+    }
+
+    .panierVide{
+        width : 80%;
+        height : 200px;
+    }
+}

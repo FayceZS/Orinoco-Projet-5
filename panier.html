@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Votre panier</title>
+    
+    <link href="style.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/b602caafa6.js" crossorigin="anonymous"></script>
+    
+</head>
+<body>
+    <header>
+        <h1><a href="index.html" id="orinocoTitle">Orinoco</a></h1>
+        
+    </header>
+    <h2>Votre Panier</h2>  
+    <section class ="deleteThis panierVide" >
+            <p>Votre panier est vide :/</p>
+            <a href="index.html">Faites un tour dans la boutique vous trouverez forcément votre bonheur</a>
+    </section>
+    <section id="productsContenairCaddy">
+
+        </section>
+    <form id="formulaireCommande" method="POST">
+        <label>Formulaire de commande<br></label>
+        <label>Prénom<br><input type="text" id="firstName" name="Prénom"   placeholder="   Prénom" required class=""></label>
+        <label>Nom<br><input type="text" id="lastName" name="Nom"  placeholder="   Nom" required class=""></label>
+        <label>Adresse<br><input type="text" id="adress" name="Adresse"  placeholder="   Adresse" required class=""></label>
+        <label>Ville<br><input type="text" id = "city" name="Ville" placeholder="   Ville" required class=""></label>
+        <label>Adresse électronique<br><input type="email" id="email" name="Adresse électronique" placeholder="    Email" required class=""></label>
+        <span id = "totalPrice"></span>
+        <input type="submit" id="submitButton" onclick="submitForm()" name="submitButton">
+    </form>
+        <footer>
+            <p>Copyright Orinoco</p>
+        </footer> 
+    <script type="text/javascript" src="panierPage.js"></script>
+</body>
+</html>
