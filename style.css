@@ -374,6 +374,11 @@ h2 {
     font-size : 25px;
 }
 
+#panierPageButtons{
+    display : flex;
+    justify-content: space-between;
+}
+
 
 
                                            /*CSS CONCERNANT LA CONIFRMATION DE COMMANDE*/ 
