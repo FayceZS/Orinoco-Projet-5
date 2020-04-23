@@ -249,7 +249,8 @@ background: linear-gradient(0deg, rgba(195,159,34,0.7754289215686274) 0%, rgba(2
 }
 
 .deleteThis {
-    display: none;
+    display: none!important; 
+    
 }
 
 h2 {
@@ -306,7 +307,7 @@ h2 {
     width: 80px;
 }
 
-#formulaireCommande{
+#formulaireCommande{                        /*CSS concernant le formulaire*/
     display: flex;
     flex-direction: column;
     margin : auto;
@@ -322,6 +323,19 @@ h2 {
     border-radius : 15px;
     width : 90%;
     margin:auto auto 15px auto;
+}
+
+.badInput{
+    background: brown;
+}
+
+.badInput::placeholder{
+    color:white;
+    font-weight: bold;
+}
+
+.goodInput{
+    background : rgb(88, 165, 88);
 }
 
                                         /* CSS CONCERNANT LA PAGE DE PRODUIT UNIQUE*/
