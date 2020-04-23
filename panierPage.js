@@ -154,6 +154,8 @@ const submitForm = ()=>{                    //On crée la fonction qui nous perm
         
         const orderConfirm = JSON.parse(xhr.responseText);
         console.log(orderConfirm.orderId);
+        localStorage.setItem("prenomClient",firstNameForm.value);
+        localStorage.setItem("totalPrice",totalPrice)
         localStorage.setItem("orderID",orderConfirm.orderId); 
         document.location.href = `confirmation.html#${orderConfirm.orderId}`;
 
