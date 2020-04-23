@@ -31,8 +31,8 @@ const addToCard = (product)=>{     //Fonction qui ajoute nos produits au panier
                                         
          //On stocke le panier dans localStorage pour pouvoir s'en servir sur les autres pages
 console.log(`Vous avez ajouté ${product} à votre panier`);
+if(localStorage.hasOwnProperty("panier")){localPanier=localStorage.getItem("panier").split(",");}
 
-localPanier=localStorage.getItem("panier").split(",");
 localPanier.push(product); 
 localStorage.setItem("panier",localPanier);
 calculCardQuantity();
