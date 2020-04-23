@@ -11,11 +11,13 @@ const adressForm = document.querySelector("#adress");
 const cityForm = document.querySelector("#city");
 const emailForm = document.querySelector("#email");
 const submitButton = document.querySelector("#submitButton");
+const inputs = document.querySelectorAll("input");
+const totalPriceContenair = document.querySelector("#totalPrice")
 
 
-submitButton.addEventListener("click",(e)=>{                                //On enlève le comportement par défaut du formulaire pour ne pas rafraichir la page à l'envoi
-    e.preventDefault();
-})
+// submitButton.addEventListener("click",(e)=>{                                //On enlève le comportement par défaut du formulaire pour ne pas rafraichir la page à l'envoi
+//     e.preventDefault();
+// })
 
 class contactCreate  {                                                      //On crée une classe pour générer l'objet contact
     constructor(firstName,lastName,address,city,email,panierProducts){  
@@ -48,12 +50,17 @@ class contactCreate  {                                                      //On
 
 
 
+
+
+
 const checkPanier = ()=>{                                               //Fonction qui va nous permettre de connaitre le panier
 
         if(localStorage.hasOwnProperty('panier')){                          //On vérifie si le localStorage à la propriété panier et donc qu'il n'est pas vide
-            
+            panierProducts=localStorage.getItem("panier").split(",");
             panierVide.classList.add("deleteThis");
             panierVide.classList.remove("panierVide");
+            // formulaire.innerHTML =  '<label>Formulaire de commande</label><input type="text" id="firstName" name="firstName"   placeholder="   Prénom" required><input type="text" id="lastName" name="lastName"  placeholder="   Nom" required><input type="text" id="adress" name="address"  placeholder="   Adresse" required><input type="text" id = "city" name="city" placeholder="   Ville" required><input type="email" id="email" name="email" placeholder="    Email" required><input type="submit" id="submitButton" onclick="submitForm()"></input>'
+            
             if(panierProducts[0] == "" ){panierProducts.splice(0,1)}           //On supprime le bug de la chaine de caractères vides
             else if(panierProducts.length == 0){
                 panierVide.classList.remove("deleteThis");
@@ -63,12 +70,17 @@ const checkPanier = ()=>{                                               //Foncti
         if(panierProducts.length == 0){
             panierVide.classList.remove("deleteThis");
             panierVide.classList.add("panierVide");
+            formulaire.classList.add("deleteThis")
         };
         
 
 }
 
 checkPanier();
+
+
+
+    
 
 
 
@@ -88,6 +100,7 @@ const loadPanierProducts = () => {                          //On crée une fonct
     });
     document.querySelector("#productsContenairCaddy").innerHTML += afficherProduit + colors + "</select>";
     totalPrice += product.price;                                                                                    //On calcule le prix total
+    
     }
     if(panierProducts.length>0){
         panierProducts.forEach(id => {                                          //On obtient les informations propres à chaque produit en faisant une boucle qui va parcourir notre panier
@@ -106,10 +119,29 @@ const loadPanierProducts = () => {                          //On crée une fonct
 
 loadPanierProducts();                        //On lance la fonction qui va charger les produits du client
 
+totalPriceContenair.innerHTML += `Prix total : ${totalPrice}`;   //Intégration du prix total
+
 const submitForm = ()=>{                    //On crée la fonction qui nous permettra d'envoyer notre formulaire
+
     
+
+    submitButton.addEventListener("click",(e)=>{
+        e.preventDefault();
+        checkForm();
+        if(document.querySelectorAll(".goodInput").length == 5){
+            submitRequest();
+        }
+        
+        else
+        {
+            checkForm();
+            
+    
+        }
+        });   
+
     let contact = new contactCreate(firstNameForm.value,lastNameForm.value,adressForm.value,cityForm.value,emailForm.value); 
-    const submitResquet = ()=>{
+    const submitRequest = ()=>{
        
     const xhr = new XMLHttpRequest();
     const products = panierProducts;
@@ -123,21 +155,98 @@ const submitForm = ()=>{                    //On crée la fonction qui nous perm
         const orderConfirm = JSON.parse(xhr.responseText);
         console.log(orderConfirm.orderId);
         localStorage.setItem("orderID",orderConfirm.orderId); 
-        
+        document.location.href = `confirmation.html#${orderConfirm.orderId}`;
+
         
     }
     xhr.open("POST", "http://localhost:3000/api/teddies/order", false);
     xhr.setRequestHeader("Content-Type", "application/json");
-     
-                                                           
+        
     xhr.send(JSON.stringify(requestToSend));                            //On converti l'objet au format JSON avant de l'envoyer
+       
+        
+    }
+    
+     
+    const checkForm = ()=>{      //Fonction qui va nous permettre de vérifier si l'utilisateur à entrer des données valides dans le formulaire avant de l'envoyer
+        
+    
+    inputs.forEach( input =>{
+        
+        const verifLetters = new RegExp("/D")                                                       //Expressions régulières qui vont vérifier ce que leurs noms indiquent
+        const verifNumbers = new RegExp("[0-9]");
+        const verifMail = new RegExp(/^([\w-\.]+)@((?:[\w]+\.)+)([a-zA-Z]{2,4})/i);
+        // console.log(input.name + "  " +verifLetters.test(input.value));
+        // console.log(input.name + " " + input.value)
+       if(input.value == "" && input != submitButton) {
+            
+            input.classList.add("badInput");
+            input.classList.remove("goodInput");
+            input.placeholder = `Merci d'indiquer votre ${input.name}`;
+            
+            
+            
+           
+       
+       }
+       else if(verifNumbers.test(input.value) == false && input.name != "submitButton" && input.name != "Adresse" ){
+                        
+                        input.classList.remove("badInput");
+                        input.classList.add("goodInput");    
+            
+                    }
+        else if(input.name == "Prénom" && input.value != "" || input.name == "Nom" && input.value != "" || input.name == "Ville" && input.value != ""){
+                        if(verifNumbers.test(input.value) == true){
+                                    
+                                    console.log("Mauvaise entrée à " + input.name);
+                                    input.classList.add("badInput");
+                                    input.classList.remove("goodInput");
+                                    input.value="";
+                                    input.placeholder = "Merci de n'entrer que des lettres dans cette case";
+                                }
+
+                        
+                    };
+
+        if(input.name == "Adresse" && input.value != ""){
+            input.classList.add("goodInput");
+            input.classList.remove("badInput");
+        }
+        else if(input.name == "Adresse" && input.value != ""){
+            input.classList.add("goodInput");
+            input.classList.remove("badInput");
+        };
+
+       if(input.name == "Adresse électronique" && input.value != ""){
+            console.log(verifMail.test(input.value));
+            if(verifMail.test(input.value) == false){
+                console.log("Mauvaise entrée à " + input.name);
+                input.classList.add("badInput");
+                input.classList.remove("goodInput");
+                input.value="";
+                input.placeholder = "Merci d'entrer une adresse électronique valide";
+            }
+            else{
+                input.classList.remove("badInput");
+                input.classList.add("goodInput");
+            }
+       };             
+    
+        
+
+    })
+
+    
+
+    };      
+
     
     
     
+
     
     };
 
-    submitResquet();
-
-
-}
+ submitForm();   
+    
+ 
