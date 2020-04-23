@@ -1,4 +1,4 @@
-
+const confirmationMessageContenair = document.querySelector("#confirmationMessage");
 
 const confirmCommand = () => {  //Fonction qui va nous permettre de remercier le client à sa commande
 
@@ -7,7 +7,7 @@ const confirmCommand = () => {  //Fonction qui va nous permettre de remercier le
         const prenomClient = localStorage.prenomClient;
         const orderId = localStorage.orderID;
         const totalPrice = localStorage.totalPrice;
-        const confirmationMessageContenair = document.querySelector("#confirmationMessage");
+        
         localStorage.clear();
 
         confirmationMessageContenair.innerHTML = `<p>${prenomClient} toute l'équipe d'orinoco vous remercie pour votre commande</p><br><p>D'un montant de ${totalPrice}</p><br><p>Votre numéro de commande est ${orderId}</p><br><p>A très bientôt sur Orinoco</p>`
