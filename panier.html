@@ -22,13 +22,14 @@
 
         </section>
     <form id="formulaireCommande" method="POST">
-        <label>Formulaire de commande</label>
-        <input type="text" id="firstName" name="firstName"   placeholder="   Prénom" required>
-        <input type="text" id="lastName" name="lastName"  placeholder="   Nom" required>
-        <input type="text" id="adress" name="address"  placeholder="   Adresse" required>
-        <input type="text" id = "city" name="city" placeholder="   Ville" required>
-        <input type="email" id="email" name="email" placeholder="    Email" required>
-        <input type="submit" id="submitButton" onclick="submitForm()">
+        <label>Formulaire de commande<br></label>
+        <label>Prénom<br><input type="text" id="firstName" name="Prénom"   placeholder="   Prénom" required class=""></label>
+        <label>Nom<br><input type="text" id="lastName" name="Nom"  placeholder="   Nom" required class=""></label>
+        <label>Adresse<br><input type="text" id="adress" name="Adresse"  placeholder="   Adresse" required class=""></label>
+        <label>Ville<br><input type="text" id = "city" name="Ville" placeholder="   Ville" required class=""></label>
+        <label>Adresse électronique<input type="email" id="email" name="Adresse électronique" placeholder="    Email" required class=""></label>
+        <span id = "totalPrice"></span>
+        <input type="submit" id="submitButton" onclick="submitForm()" name="submitButton">
     </form>
         <footer>
             <p>Copyright Orinoco</p>
