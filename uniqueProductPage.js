@@ -1,22 +1,27 @@
 let cardQuantity = document.getElementById("quantityCard");            //Nombre de produits que contient le panier
 let productID = window.location.href.substring(window.location.href.indexOf("#")+1,window.location.href.length);   //Variable dans laquelle nous allons stocker l'id du produit voulu grâce à l'url
-console.log(productID);
+let localPanier = [];
 
 
 const calculCardQuantity = ()=>{                        //Fonction qui nous permet de calculer le panier actuel du client
     
-    if(localStorage.hasOwnProperty('panier'))
-        {localPanier=localStorage.getItem("panier").split(",");
+    if(localStorage.hasOwnProperty('panier')){
+        localPanier=localStorage.getItem("panier").split(",");
         if(localPanier[0] == "" ){localPanier.splice(0,1)};
+        if(localStorage.getItem("panier").split(",")>0){localPanier = localStorage.getItem("panier").split(",");};
+        cardQuantity.innerHTML = localPanier.length;
     
     }
-    else if(localPanier.length>0){
-        localPanier = localStorage.getItem("panier").split(",");   //On récupère le panier du client s'il est revenu sur la page
-        for(i=0;i<localPanier.length;i++){console.log(i)}
-        cardQuantity.innerHTML = localPanier.length;
-        if(localStorage.getItem("panier").split(",")>0){localPanier = localStorage.getItem("panier").split(",");};
+    // else if(localStorage.hasOwnProperty('panier') && localPanier.length>0){
+    //     localPanier = localStorage.getItem("panier").split(",");   //On récupère le panier du client s'il est revenu sur la page
+    //     for(i=0;i<localPanier.length;i++){console.log(i)}
+    //     cardQuantity.innerHTML = localPanier.length;
+    //     if(localStorage.getItem("panier").split(",")>0){localPanier = localStorage.getItem("panier").split(",");};
+    // }
+    else{
+        cardQuantity.innerHTML = 0;
     };
-    cardQuantity.innerHTML = localPanier.length;
+    // cardQuantity.innerHTML = localPanier.length;
     
 }
 
@@ -24,9 +29,12 @@ calculCardQuantity();
 
 const addToCard = (product)=>{     //Fonction qui ajoute nos produits au panier
                                         
-localPanier.push(product);          //On stocke le panier dans localStorage pour pouvoir s'en servir sur les autres pages
+         //On stocke le panier dans localStorage pour pouvoir s'en servir sur les autres pages
 console.log(`Vous avez ajouté ${product} à votre panier`);
-localStorage.setItem("panier",localPanier); 
+
+localPanier=localStorage.getItem("panier").split(",");
+localPanier.push(product); 
+localStorage.setItem("panier",localPanier);
 calculCardQuantity();
 };
 
